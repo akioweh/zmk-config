@@ -26,13 +26,13 @@
         };
 
         lbrkt {
-            bindings = <&kp LBKT>;
+            bindings = <&mm_lbrkt>;
             key-positions = <2 14>;
             layers = <0>;
         };
 
         rbrkt {
-            bindings = <&kp RBKT>;
+            bindings = <&mm_rbrkt>;
             key-positions = <4 16>;
             layers = <0>;
         };
@@ -50,31 +50,31 @@
         };
 
         excl {
-            bindings = <&kp EXCLAMATION>;
+            bindings = <&kp RS(N1)>;
             key-positions = <13 25>;
             layers = <0>;
         };
 
         ats {
-            bindings = <&kp AT_SIGN>;
+            bindings = <&kp RS(N2)>;
             key-positions = <14 26>;
             layers = <0>;
         };
 
         hsh {
-            bindings = <&kp HASH>;
+            bindings = <&kp RS(N3)>;
             key-positions = <15 27>;
             layers = <0>;
         };
 
         dlr {
-            bindings = <&kp DLLR>;
+            bindings = <&kp RS(N4)>;
             key-positions = <16 28>;
             layers = <0>;
         };
 
         pct {
-            bindings = <&kp PRCNT>;
+            bindings = <&kp RS(N5)>;
             key-positions = <17 29>;
             layers = <0>;
         };
@@ -93,7 +93,7 @@
 
         eq {
             bindings = <&kp EQUAL>;
-            key-positions = <5 17>;
+            key-positions = <6 18>;
             timeout-ms = <15>;
             layers = <0>;
         };
@@ -192,6 +192,24 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
             keep-mods = <(MOD_LSFT)>;
+        };
+
+        mm_lbrkt: mm_lbrkt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_LBRKT";
+            bindings = <&kp LBKT>, <&kp LS(LBKT)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_rbrkt: mm_rbrkt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_RBRKT";
+            bindings = <&kp RBKT>, <&kp LS(RBKT)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
