@@ -104,6 +104,13 @@
             timeout-ms = <15>;
             layers = <0>;
         };
+
+        eq2 {
+            bindings = <&kp EQUAL>;
+            key-positions = <17 5>;
+            timeout-ms = <15>;
+            layers = <0>;
+        };
     };
 
     macros {
