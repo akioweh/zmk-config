@@ -281,8 +281,8 @@
         sym {
             bindings = <
 &kp GRAVE  &kp RS(N1)  &kp RS(N2)  &kp RS(N3)  &kp RS(N4)  &kp RS(N5)                                  &kp LS(N6)  &kp LS(N7)  &kp LS(N8)  &kp LS(N9)  &kp LS(N0)  &kp EQUAL
-&trans     &trans      &kp LBKT    &trans      &kp RBKT    &trans                                      &eqs        &kp LBRC    &trans      &kp RBRC    &trans      &kp BSLH
-&trans     &trans      &trans      &trans      &trans      &trans      &trans  &trans  &trans  &trans  &trans      &trans      &trans      &trans      &trans      &trans
+&none      &none       &kp LBKT    &none       &kp RBKT    &kp PLUS                                    &eqs        &kp LBRC    &none       &kp RBRC    &none       &kp BSLH
+&none      &none       &none       &none       &none       &kp MINUS   &trans  &trans  &trans  &trans  &none       &none       &none       &none       &kp FSLH    &none
                                    &trans      &trans      &trans      &trans  &trans  &trans  &trans  &trans      &trans      &trans
             >;
         };
