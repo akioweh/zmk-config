@@ -16,25 +16,25 @@
         lparen {
             bindings = <&mm_lparen>;
             key-positions = <7 19>;
-            layers = <0>;
+            layers = <0 2>;
         };
 
         rparen {
             bindings = <&mm_rparen>;
             key-positions = <9 21>;
-            layers = <0>;
+            layers = <0 2>;
         };
 
         lbrkt {
             bindings = <&mm_lbrkt>;
             key-positions = <2 14>;
-            layers = <0>;
+            layers = <0 2>;
         };
 
         rbrkt {
             bindings = <&mm_rbrkt>;
             key-positions = <4 16>;
-            layers = <0>;
+            layers = <0 2>;
         };
 
         ast {
