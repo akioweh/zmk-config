@@ -11,6 +11,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 30000
+#define COMBO_TIMEOUT 25
 
 &mmv {
     time-to-max-speed-ms = <500>;
@@ -22,102 +23,157 @@
     combos {
         compatible = "zmk,combos";
 
-        lparen {
-            bindings = <&mm_lparen>;
-            key-positions = <7 19>;
+        lbkt {
+            bindings = <&kp LBKT>;
+            key-positions = <3 4>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0 2>;
         };
 
-        rparen {
-            bindings = <&mm_rparen>;
-            key-positions = <9 21>;
+        lpar {
+            bindings = <&kp LPAR>;
+            key-positions = <16 15>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0 2>;
         };
 
-        lbrkt {
-            bindings = <&mm_lbrkt>;
-            key-positions = <2 14>;
+        lbrc {
+            bindings = <&kp LBRC>;
+            key-positions = <28 27>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0 2>;
         };
 
-        rbrkt {
-            bindings = <&mm_rbrkt>;
-            key-positions = <4 16>;
+        rbkt {
+            bindings = <&kp RBKT>;
+            key-positions = <7 8>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0 2>;
         };
 
-        ast {
-            bindings = <&kp ASTRK>;
-            key-positions = <20 8>;
+        rpar {
+            bindings = <&kp RPAR>;
+            key-positions = <20 19>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0 2>;
+        };
+
+        rbrc {
+            bindings = <&kp RBRC>;
+            key-positions = <35 36>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0 2>;
+        };
+
+        dsh {
+            bindings = <&ws_dsh>;
+            key-positions = <2 3>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
 
-        bslsh {
-            bindings = <&kp BSLH>;
-            key-positions = <11 23>;
+        undsc {
+            bindings = <&kp UNDER>;
+            key-positions = <14 15>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0>;
+        };
+
+        amps {
+            bindings = <&kp AMPS>;
+            key-positions = <26 27>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
 
         excl {
             bindings = <&kp RS(N1)>;
+            key-positions = <1 2>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0>;
+        };
+
+        plus {
+            bindings = <&ws_plus>;
+            key-positions = <8 9>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0>;
+        };
+
+        eq {
+            bindings = <&ws_eq>;
+            key-positions = <21 20>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0>;
+        };
+
+        ast {
+            bindings = <&ws_ast>;
+            key-positions = <37 36>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0>;
+        };
+
+        bslsh {
+            bindings = <&kp BSLH>;
+            key-positions = <22 21>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0>;
+        };
+
+        z {
+            bindings = <&kp Z>;
+            key-positions = <13 14>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            layers = <0>;
+        };
+
+        excl2 {
+            bindings = <&kp RS(N1)>;
             key-positions = <13 25>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
 
         ats {
             bindings = <&kp RS(N2)>;
             key-positions = <14 26>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
 
         hsh {
             bindings = <&kp RS(N3)>;
             key-positions = <15 27>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
 
         dlr {
             bindings = <&kp RS(N4)>;
             key-positions = <16 28>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
 
         pct {
             bindings = <&kp RS(N5)>;
             key-positions = <17 29>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
 
         crt {
             bindings = <&kp CARET>;
             key-positions = <18 34>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
 
-        amps {
+        amps2 {
             bindings = <&kp AMPS>;
-            key-positions = <19 35>;
-            layers = <0>;
-        };
-
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <6 18>;
-            timeout-ms = <15>;
-            layers = <0>;
-        };
-
-        plus {
-            bindings = <&kp PLUS>;
-            key-positions = <3 15>;
-            timeout-ms = <15>;
-            layers = <0>;
-        };
-
-        eq2 {
-            bindings = <&kp EQUAL>;
-            key-positions = <17 5>;
-            timeout-ms = <15>;
+            key-positions = <35 19>;
+            timeout-ms = <COMBO_TIMEOUT>;
             layers = <0>;
         };
     };
@@ -137,12 +193,16 @@
             label = "ALT_TAB";
         };
 
-        eqs: eqs {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp SPACE &kp EQUAL &kp SPACE>;
+        wrap_spc: wrap_spc {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&macro_tap>,
+                <&kp SPACE &macro_param_1to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
 
-            label = "EQS";
+            label = "WRAP_SPC";
+            wait-ms = <0>;
+            tap-ms = <5>;
         };
     };
 
@@ -169,24 +229,6 @@
             flavor = "hold-preferred";
             quick-tap-ms = <150>;
             hold-trigger-key-positions = <6 7 8 9 10 18 19 20 21 22 34 35 36 37 23 11 39 38 41 47 42 48 45>;
-        };
-
-        mm_lparen: mm_lparen {
-            compatible = "zmk,behavior-mod-morph";
-            label = "MM_LPAREN";
-            bindings = <&kp LEFT_PARENTHESIS>, <&kp LEFT_BRACE>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mm_rparen: mm_rparen {
-            compatible = "zmk,behavior-mod-morph";
-            label = "MM_RPAREN";
-            bindings = <&kp RIGHT_PARENTHESIS>, <&kp RIGHT_BRACE>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         brightness: brightness {
@@ -218,28 +260,46 @@
             keep-mods = <(MOD_LSFT)>;
         };
 
-        mm_lbrkt: mm_lbrkt {
-            compatible = "zmk,behavior-mod-morph";
-            label = "MM_LBRKT";
-            bindings = <&kp LBKT>, <&kp LS(LBKT)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mm_rbrkt: mm_rbrkt {
-            compatible = "zmk,behavior-mod-morph";
-            label = "MM_RBRKT";
-            bindings = <&kp RBKT>, <&kp LS(RBKT)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         mm_caps: mm_caps {
             compatible = "zmk,behavior-mod-morph";
             label = "MM_CAPS";
             bindings = <&caps_word>, <&kp CAPS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        ws_eq: ws_eq {
+            compatible = "zmk,behavior-mod-morph";
+            label = "WS_EQ";
+            bindings = <&kp EQUAL>, <&wrap_spc EQUAL>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        ws_plus: ws_plus {
+            compatible = "zmk,behavior-mod-morph";
+            label = "WS_PLUS";
+            bindings = <&kp PLUS>, <&wrap_spc PLUS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        ws_dsh: ws_dsh {
+            compatible = "zmk,behavior-mod-morph";
+            label = "WS_DSH";
+            bindings = <&kp MINUS>, <&wrap_spc MINUS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        ws_ast: ws_ast {
+            compatible = "zmk,behavior-mod-morph";
+            label = "WS_AST";
+            bindings = <&kp ASTRK>, <&wrap_spc ASTRK>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -251,7 +311,7 @@
 
         base {
             bindings = <
-&kp GRAVE  &kp Q    &kp W  &kp E        &kp R         &kp T                                       &kp Y    &kp U     &kp I      &kp O    &kp P     &kp MINUS
+&kp GRAVE  &kp Q    &kp W  &kp E        &kp R         &kp T                                       &kp Y    &kp U     &kp I      &kp O    &kp P     &kp BSLH
 &kp TAB    &kp A    &kp S  &kp D        &kp F         &kp G                                       &kp H    &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LCTRL  &c_lsft  &kp X  &kp C        &kp V         &kp B      &trans  &mo 1  &to 0     &trans  &kp N    &kp M     &kp COMMA  &kp DOT  &c_rsft   &kp RCTRL
                            &brightness  &kp LEFT_GUI  &kp SPACE  &mo 4   &mo 7  &mm_caps  &mo 2   &kp RET  &kp LALT  &alt_tab
@@ -306,7 +366,7 @@
         sym {
             bindings = <
 &kp GRAVE  &kp RS(N1)  &kp RS(N2)  &kp RS(N3)  &kp RS(N4)  &kp RS(N5)                                  &kp LS(N6)  &kp LS(N7)  &kp LS(N8)  &kp LS(N9)  &kp LS(N0)  &kp EQUAL
-&none      &kp MINUS   &kp LBKT    &none       &kp RBKT    &kp PLUS                                    &eqs        &kp LBRC    &none       &kp RBRC    &none       &kp BSLH
+&none      &kp MINUS   &kp LBKT    &none       &kp RBKT    &kp PLUS                                    &none       &kp LBRC    &none       &kp RBRC    &none       &kp BSLH
 &none      &none       &none       &none       &none       &none       &trans  &trans  &trans  &trans  &none       &none       &none       &none       &kp FSLH    &none
                                    &trans      &trans      &trans      &trans  &trans  &trans  &trans  &trans      &trans      &trans
             >;
