@@ -272,7 +272,7 @@
 &kp GRAVE  &kp AMPS   &kp N1  &kp N2  &kp N3  &kp MINUS                                  &none          &kp LPAR   &mo 3      &kp RPAR  &none     &none
 &kp TAB    &kp N0     &kp N4  &kp N5  &kp N6  &kp PLUS                                   &kp BACKSPACE  &kp LCTRL  &kp LSHFT  &kp LALT  &kp LGUI  &kp SQT
 &kp RET    &kp CARET  &kp N7  &kp N8  &kp N9  &kp ASTRK  &trans  &trans  &trans  &trans  &none          &kp EQUAL  &kp COMMA  &kp DOT   &kp FSLH  &kp RET
-                              &trans  &trans  &trans     &mo 6   &trans  &trans  &trans  &trans         &trans     &trans
+                              &trans  &trans  &trans     &trans  &trans  &trans  &trans  &trans         &trans     &trans
             >;
         };
 
