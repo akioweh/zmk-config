@@ -287,10 +287,10 @@
 
         nav {
             bindings = <
-&trans  &trans    &kp C_AC_BACK  &mo 5      &kp C_AC_FORWARD  &trans                                   &trans         &trans    &kp ESC  &trans     &trans    &trans
-&trans  &kp LGUI  &kp LALT       &kp LSHFT  &kp LCTRL         &kp DEL                                  &kp BACKSPACE  &kp LEFT  &kp UP   &kp RIGHT  &kp DOWN  &trans
-&trans  &trans    &trans         &none      &trans            &trans   &trans  &trans  &trans  &trans  &trans         &trans    &trans   &trans     &trans    &trans
-                                 &trans     &trans            &trans   &trans  &trans  &trans  &mo 6   &trans         &trans    &trans
+&trans  &trans    &kp C_AC_BACK  &mo 5      &kp C_AC_FORWARD  &trans                                   &trans          &trans          &kp ESC       &trans           &trans    &trans
+&trans  &kp LGUI  &kp LALT       &kp LSHFT  &kp LCTRL         &kp DEL                                  &kp BACKSPACE   &kp LEFT        &kp UP        &kp RIGHT        &kp DOWN  &trans
+&trans  &trans    &trans         &trans     &trans            &trans   &trans  &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans    &trans
+                                 &trans     &trans            &trans   &trans  &trans  &trans  &trans  &trans          &trans          &trans
             >;
         };
 
