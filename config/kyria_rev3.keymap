@@ -10,13 +10,19 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 30000
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 20000
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 #define COMBO_TIMEOUT 25
 
 &mmv {
-    time-to-max-speed-ms = <500>;
+    time-to-max-speed-ms = <100>;
     trigger-period-ms = <5>;
     acceleration-exponent = <1>;
+};
+
+&msc {
+    time-to-max-speed-ms = <150>;
+    acceleration-exponent = <0>;
 };
 
 / {
