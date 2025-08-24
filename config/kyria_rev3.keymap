@@ -34,7 +34,7 @@
             bindings = <&kp LPAR>;
             key-positions = <16 15>;
             timeout-ms = <COMBO_TIMEOUT>;
-            layers = <0 2>;
+            layers = <0>;
         };
 
         lbrc {
@@ -55,7 +55,7 @@
             bindings = <&kp RPAR>;
             key-positions = <20 19>;
             timeout-ms = <COMBO_TIMEOUT>;
-            layers = <0 2>;
+            layers = <0>;
         };
 
         rbrc {
