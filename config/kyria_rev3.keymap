@@ -127,13 +127,6 @@
             layers = <0>;
         };
 
-        z {
-            bindings = <&kp Z>;
-            key-positions = <13 14>;
-            timeout-ms = <COMBO_TIMEOUT>;
-            layers = <0>;
-        };
-
         excl2 {
             bindings = <&kp RS(N1)>;
             key-positions = <13 25>;
