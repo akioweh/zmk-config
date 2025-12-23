@@ -1,0 +1,65 @@
+name: Draw ZMK Keymaps
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "config/*.keymap"
+      - "keymap_drawer.config.yaml"
+      - ".github/workflows/draw-keymap.yml"
+
+# Cancel previous runs if a new push happens
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-keymap-drawer-${{ hashFiles('**/draw-keymap.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-keymap-drawer-
+            ${{ runner.os }}-pip-
+
+      - name: Install keymap-drawer
+        run: pip install keymap-drawer
+
+      - name: Parse and Draw Keymap
+        run: |
+          mkdir -p keymap-drawer
+
+          # Check for config file
+          CONFIG_ARGS=()
+          if [ -f "keymap_drawer.config.yaml" ]; then
+            CONFIG_ARGS=("-c" "keymap_drawer.config.yaml")
+          fi
+
+          keymap "${CONFIG_ARGS[@]}" parse -z config/kyria_rev3.keymap > keymap-drawer/kyria_rev3.yaml
+          keymap "${CONFIG_ARGS[@]}" draw keymap-drawer/kyria_rev3.yaml > keymap-drawer/kyria_rev3.svg
+
+      - name: Archive artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: keymap-drawer-output
+          path: keymap-drawer/
+
+      - name: Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Draw keymaps for ${{ github.sha }}"
+          file_pattern: "keymap-drawer/*"
