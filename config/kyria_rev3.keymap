@@ -321,7 +321,7 @@
             bindings = <
 &bt BT_CLR    &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &none                                  &kp C_BRIGHTNESS_INC  &kp C_VOL_UP      &none       &none  &none  &none
 &out OUT_BLE  &none  &bt BT_SEL 3  &bt BT_SEL 4  &none         &none                                  &kp C_PREV            &kp C_PLAY_PAUSE  &kp C_NEXT  &none  &none  &none
-&out OUT_USB  &none  &none         &none         &none         &none  &trans  &trans  &trans  &trans  &kp C_BRIGHTNESS_DEC  &kp C_VOL_DN      &none       &none  &none  &none
+&out OUT_USB  &none  &none         &none         &none         &to 8  &trans  &trans  &trans  &trans  &kp C_BRIGHTNESS_DEC  &kp C_VOL_DN      &none       &none  &none  &none
                                    &none         &none         &none  &none   &none   &none   &none   &none                 &none             &none
             >;
         };
@@ -377,6 +377,24 @@
 &none  &none  &none  &none   &mkp MB1  &mkp MB2                                  &none           &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_RIGHT  &mmv MOVE_DOWN  &none
 &none  &none  &none  &none   &none     &none     &trans  &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &none           &none
                      &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans          &trans          &trans
+            >;
+        };
+
+        mc {
+            bindings = <
+&kp N1     &kp N2  &kp N3  &kp N4  &kp N5  &kp ESC                                    &kp N6   &kp N7  &kp N8  &kp N9  &kp N0  &none
+&kp LCTRL  &kp A   &kp W   &kp E   &kp R   &kp T                                      &none    &none   &none   &none   &none   &none
+&kp LSHFT  &kp Z   &kp S   &kp D   &kp F   &kp G      &trans  &trans  &to 0   &trans  &none    &none   &none   &none   &none   &kp RCTRL
+                           &kp X   &kp C   &kp SPACE  &mo 9   &kp V   &trans  &trans  &kp RET  &trans  &trans
+            >;
+        };
+
+        mc_2 {
+            bindings = <
+&kp N6     &kp N7     &kp N8  &kp N9  &kp N0  &trans                                  &trans  &trans  &trans  &trans  &trans  &trans
+&kp TAB    &kp Q      &trans  &trans  &trans  &trans                                  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LCTRL  &kp GRAVE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                              &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
