@@ -1,7 +1,9 @@
 # my map
 
-I currently main the Kyria (revision 3) from SplitKB.
-This is the keymap that I use.
+(I now main the Beekeeb Toucan 2 with a [very similar keymap](https://github.com/akioweh/k2-zmk-config).)
+
+I ~~currently~~ used to main the SplitKB Kyria (revision 3).
+This is the keymap that I used.
 
 - QWERTY
 - combos for accessible symbols on base layer, programming-oriented
